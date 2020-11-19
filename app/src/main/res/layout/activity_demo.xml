@@ -5,7 +5,7 @@
 
     <data>
 
-        <import type="com.demo.mvvm.viewmodel.DemoViewModel"/>
+        <import type="com.demo.mvvm.viewmodel.DemoViewModel" />
 
         <variable
             name="demoViewModel"
@@ -19,25 +19,34 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/layout_title_bar"
-            app:titleBar="@{demoViewModel.titleBar}"/>
+        <include
+            layout="@layout/layout_title_bar"
+            app:titleBar="@{demoViewModel.titleBar}" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="15dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="15dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@={demoViewModel.text}"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@{demoViewModel.image}"/>
+                android:src="@{demoViewModel.image}" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:itemBinding="@{demoViewModel.itemBinding}"
+                app:items="@{demoViewModel.items}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 
         </LinearLayout>

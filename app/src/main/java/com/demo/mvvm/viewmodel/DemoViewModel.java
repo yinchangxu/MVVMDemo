@@ -1,7 +1,10 @@
 package com.demo.mvvm.viewmodel;
 
+import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableList;
 
+import com.demo.mvvm.BR;
 import com.demo.mvvm.R;
 import com.demo.mvvm.entity.DemoEntity;
 import com.demo.mvvm.entity.ResultEntity;
@@ -13,6 +16,8 @@ import com.example.myapplication.listener.OnResultListener;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import me.tatarka.bindingcollectionadapter2.ItemBinding;
 
 /**
  * 文件名: DemoViewModel
@@ -31,6 +36,10 @@ public class DemoViewModel extends BaseViewModel<DemoRepository> {
     //图片
     public ObservableField<Object> image = new ObservableField<>(R.mipmap.ic_launcher);
 
+    //recycleview
+    public final ObservableList<DemoEntity> items = new ObservableArrayList<>();
+    public final ItemBinding<DemoEntity> itemBinding = ItemBinding.of(BR.demoEntity, R.layout.item);
+
     public DemoViewModel(DemoRepository repository) {
         super(repository);
         titleBarBean.tvCenter.set("示例");
@@ -45,6 +54,15 @@ public class DemoViewModel extends BaseViewModel<DemoRepository> {
     @Override
     protected void onCreate() {
         super.onCreate();
+
+        for (int i = 0; i < 5; i++) {
+            DemoEntity demoEntity = new DemoEntity();
+            demoEntity.username = String.valueOf(i);
+            demoEntity.id = String.valueOf(i);
+            demoEntity.nickname = String.valueOf(i);
+            demoEntity.password = String.valueOf(i);
+            items.add(demoEntity);
+        }
 
         Map<String, Object> postMap1 = new HashMap<>();
         postMap1.put("username", "123");
