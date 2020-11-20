@@ -1,4 +1,4 @@
-package com.example.myapplication.base;
+package com.example.myapplication.base.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
