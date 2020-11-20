@@ -19,6 +19,6 @@ public class NetworkURL {
      */
 //    public static final String SERVER_URL = "http://192.168.8.113:8090/";
 
-    public static final String SERVER_URL = "http://www.xxx.com/";
+    public static String SERVER_URL = "http://www.xxx.com/";
 
 }

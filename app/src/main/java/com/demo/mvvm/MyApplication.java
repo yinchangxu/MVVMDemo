@@ -18,4 +18,9 @@ public class MyApplication extends BaseApplication {
         context = this;
     }
 
+    @Override
+    protected String initBaseUrl() {
+        return "http://www.xxx.com";
+    }
+
 }

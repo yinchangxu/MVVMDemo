@@ -7,6 +7,7 @@ import android.content.Context;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
 import com.example.myapplication.R;
+import com.example.myapplication.constant.NetworkURL;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
@@ -18,7 +19,8 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
  * 日期: 2020/4/16 23:42
  * 描述: 工程总Application
  */
-public class BaseApplication extends Application {
+public abstract class BaseApplication extends Application {
+
 
     /**
      * MainApp Context
@@ -45,8 +47,11 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        NetworkURL.SERVER_URL = initBaseUrl();
         init();
     }
+
+    protected abstract String initBaseUrl();
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -106,7 +111,6 @@ public class BaseApplication extends Application {
         }
         return sInstance;
     }
-
 
 
 }
