@@ -18,6 +18,7 @@ public class MyApplication extends BaseApplication {
         context = this;
     }
 
+    //服务器地址
     @Override
     protected String initBaseUrl() {
         return "http://www.xxx.com";
