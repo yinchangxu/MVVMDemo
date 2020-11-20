@@ -7,7 +7,7 @@
 
         <import type="android.view.View" />
 
-        <import type="com.example.myapplication.util.DisplayMetricsUtil"/>
+        <import type="com.example.myapplication.util.DisplayMetricsUtil" />
 
         <variable
             name="titleBar"
@@ -17,30 +17,30 @@
 
     <RelativeLayout
         android:id="@+id/rl_layout_title_bar"
-        backgroundColor="@{titleBar.titlebarColor}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@{titleBar.titlebarColor}"
         android:visibility="@{titleBar.titlebarVisibility}">
 
         <ImageView
             android:id="@+id/iv_layout_title_bar_break"
-            setTintColor="@{titleBar.ivLeftColor}"
             android:layout_width="26dp"
             android:layout_height="26dp"
             android:layout_gravity="left|center_vertical"
             android:layout_marginStart="15dp"
+            android:backgroundTint="@{titleBar.ivLeftColor}"
             android:onClick="@{titleBar.ivLeftOnClick}"
             android:padding="5dp"
             android:src="@{titleBar.ivLeft}" />
 
         <TextView
             android:id="@+id/tv_layout_title_bar_title"
-            setTextColor="@{titleBar.tvCenterColor}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:text="@{titleBar.tvCenter}"
+            android:textColor="@{titleBar.tvCenterColor}"
             android:textSize="17sp"
             tools:text="设置" />
 
@@ -48,16 +48,15 @@
             android:id="@+id/tv_layout_title_bar_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_layout_title_bar_title"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="5dp"
-            android:layout_alignBottom="@id/tv_layout_title_bar_title"
-            setTextColor="@{titleBar.tvRightColor}"
             android:onClick="@{titleBar.tvRightOnClick}"
             android:text="@{titleBar.tvRight}"
-            android:textColor="@color/_000000"
-            setTextSize='@{titleBar.tvRightTextSize}'
+            android:textColor="@{titleBar.tvRightColor}"
+            android:textSize='@{titleBar.tvRightTextSize}'
             android:visibility="@{titleBar.tvRightVisibility}"
             tools:text="好友" />
 
@@ -90,10 +89,10 @@
                 tools:src="@mipmap/ic_launcher" />
 
             <TextView
-                setTextColor="@{titleBar.llTvColor}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{titleBar.llTvRight}"
+                android:textColor="@{titleBar.llTvColor}"
                 android:textSize="9sp"
                 tools:text="我的好友" />
 
