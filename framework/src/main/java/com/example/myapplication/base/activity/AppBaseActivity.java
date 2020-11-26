@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
@@ -33,8 +32,6 @@ import com.example.myapplication.util.StatusBarUtil;
  */
 @NeedPermissions
 public abstract class AppBaseActivity<V extends ViewDataBinding, VM extends BaseViewModel> extends MvvmBaseActivity<V, VM> {
-
-    private LayoutInflater mInflater;
 
     protected boolean statusBarHeight = false;
 

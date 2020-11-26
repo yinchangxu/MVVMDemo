@@ -41,7 +41,7 @@ public abstract class BaseViewModel<R extends BaseRepository> extends ViewModel 
     /**
      * 连续双击退出应用
      */
-    protected boolean mExitApp;
+//    protected boolean mExitApp;
 
     public BaseViewModel(R repository) {
         this.mRepository = repository;
