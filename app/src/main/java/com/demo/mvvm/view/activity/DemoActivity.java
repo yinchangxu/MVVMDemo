@@ -32,4 +32,14 @@ public class DemoActivity extends AppBaseActivity<ActivityDemoBinding, DemoViewM
         variableSA.put(BR.demoViewModel, mViewModel);
         return variableSA;
     }
+
+    @Override
+    protected void initData() {
+        //状态栏颜色为深色
+        statusBarDark = true;
+        //设置是否自定义导航栏设置状态栏高度（true:不留状态栏高度 false:导航栏留出状态栏高度）
+        statusBarHeight = false;
+        super.initData();
+
+    }
 }

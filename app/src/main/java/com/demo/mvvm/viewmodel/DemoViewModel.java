@@ -41,6 +41,9 @@ public class DemoViewModel extends BaseViewModel<DemoRepository> {
     //文本文字
     public ObservableField<String> text = new ObservableField<>("啦啦啦");
 
+    //文字颜色
+    public ObservableInt textColor = new ObservableInt(R.color._000000);
+
     //文本大小
     public ObservableInt textSize = new ObservableInt(14);
 

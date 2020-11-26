@@ -33,7 +33,7 @@ import com.example.myapplication.util.StatusBarUtil;
 @NeedPermissions
 public abstract class AppBaseActivity<V extends ViewDataBinding, VM extends BaseViewModel> extends MvvmBaseActivity<V, VM> {
 
-    protected boolean statusBarHeight = false;
+    protected boolean statusBarHeight = true;
 
     protected boolean statusBarDark = false;
 
