@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?><!-- android 9.0 禁止了http协议 如果非要用http，就得把cleartextTrafficPermitted设置为true -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

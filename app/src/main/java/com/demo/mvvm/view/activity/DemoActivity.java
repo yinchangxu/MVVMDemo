@@ -1,6 +1,7 @@
 package com.demo.mvvm.view.activity;
 
 import android.util.SparseArray;
+import android.view.View;
 
 import com.demo.mvvm.BR;
 import com.demo.mvvm.R;
@@ -8,6 +9,10 @@ import com.demo.mvvm.databinding.ActivityDemoBinding;
 import com.demo.mvvm.viewmodel.DemoViewModel;
 import com.demo.mvvm.viewmodel.factory.DemoModelFactory;
 import com.example.myapplication.base.activity.AppBaseActivity;
+import com.kingja.loadsir.callback.Callback;
+import com.kingja.loadsir.callback.ProgressCallback;
+import com.kingja.loadsir.core.LoadService;
+import com.kingja.loadsir.core.LoadSir;
 
 /**
  * 文件名: DemoActivity

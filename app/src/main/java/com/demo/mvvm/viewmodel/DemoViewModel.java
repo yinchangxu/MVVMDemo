@@ -18,6 +18,10 @@ import com.demo.mvvm.repository.DemoRepository;
 import com.example.myapplication.base.entity.TitleBarBean;
 import com.example.myapplication.base.viewmodel.BaseViewModel;
 import com.example.myapplication.listener.OnResultListener;
+import com.kingja.loadsir.callback.Callback;
+import com.kingja.loadsir.callback.ProgressCallback;
+import com.kingja.loadsir.core.LoadService;
+import com.kingja.loadsir.core.LoadSir;
 
 import java.util.HashMap;
 import java.util.List;
@@ -91,6 +95,14 @@ public class DemoViewModel extends BaseViewModel<DemoRepository> {
     @Override
     protected void onCreate() {
         super.onCreate();
+
+        LoadService loadService = LoadSir.getDefault().register(this, new Callback.OnReloadListener() {
+            @Override
+            public void onReload(View v) {
+                // 重新加载逻辑
+            }
+        });
+        loadService.showCallback(ProgressCallback.class);
 
         //假数据
         for (int i = 0; i < 5; i++) {
