@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <com.example.shengedian.view.view.RoundImageView
+    <ImageView
         android:id="@+id/iv_callback_loading_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

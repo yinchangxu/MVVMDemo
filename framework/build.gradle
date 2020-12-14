@@ -94,6 +94,9 @@ dependencies {
     api 'com.squareup.retrofit2:converter-gson:2.6.2'
     api 'com.squareup.retrofit2:adapter-rxjava:2.6.2'
 
+    //网络加载处理框架
+    api 'com.kingja.loadsir:loadsir:1.3.8'
+
 //    //分包
 //    implementation 'androidx.multidex:multidex:2.0.1'
 

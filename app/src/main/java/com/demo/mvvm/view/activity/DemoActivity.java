@@ -46,5 +46,7 @@ public class DemoActivity extends AppBaseActivity<ActivityDemoBinding, DemoViewM
         statusBarHeight = false;
         super.initData();
 
+//        LoadService loadService = LoadSir.getDefault().register(mViewModel.items);
+//        loadService.showCallback(ProgressCallback.class);
     }
 }

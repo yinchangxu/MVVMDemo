@@ -17,7 +17,7 @@
         android:background="@drawable/shape_loading_bg">
 
 
-        <com.example.shengedian.view.view.RoundImageView
+        <ImageView
             android:id="@+id/iv_dialog_loading_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -96,14 +96,6 @@ public class DemoViewModel extends BaseViewModel<DemoRepository> {
     protected void onCreate() {
         super.onCreate();
 
-        LoadService loadService = LoadSir.getDefault().register(this, new Callback.OnReloadListener() {
-            @Override
-            public void onReload(View v) {
-                // 重新加载逻辑
-            }
-        });
-        loadService.showCallback(ProgressCallback.class);
-
         //假数据
         for (int i = 0; i < 5; i++) {
             DemoEntity demoEntity = new DemoEntity();
