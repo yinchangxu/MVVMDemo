@@ -20,10 +20,6 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
  */
 public abstract class BaseApplication extends Application {
 
-
-    /**
-     * MainApp Context
-     */
     protected static Application sInstance;
 
     //static 代码段可以防止内存泄露

@@ -224,7 +224,7 @@ public abstract class MvvmBaseFragment<V extends ViewDataBinding, VM extends Bas
                             if (permission.granted) {
                                 openCamera(path);
                             } else if (permission.shouldShowRequestPermissionRationale) {
-                                Toast.makeText(getContext(),"相机权限授予失败",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "相机权限授予失败", Toast.LENGTH_SHORT).show();
                             } else {
                                 new AlertDialog.Builder(getActivity())
                                         .setMessage("需要您去设置页面，「权限管理」，开启「相机」权限")
@@ -268,7 +268,7 @@ public abstract class MvvmBaseFragment<V extends ViewDataBinding, VM extends Bas
                             if (permission.granted) {
                                 openPhoto();
                             } else if (permission.shouldShowRequestPermissionRationale) {
-                                Toast.makeText(getContext(),"外部存储权限授予失败",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "外部存储权限授予失败", Toast.LENGTH_SHORT).show();
                             } else {
                                 new AlertDialog.Builder(getActivity())
                                         .setMessage("需要您去设置页面，「权限管理」，开启「外部存储」权限")
@@ -358,7 +358,7 @@ public abstract class MvvmBaseFragment<V extends ViewDataBinding, VM extends Bas
         mRxPermissions = null;
         //清空Disposable
         clearDisposable();
-        //解注册EventBus
+        //反注册EventBus
         if (this.getClass().isAnnotationPresent(BindEventBus.class)
                 && EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);

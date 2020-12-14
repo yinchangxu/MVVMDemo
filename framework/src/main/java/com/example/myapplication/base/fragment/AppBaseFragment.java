@@ -56,7 +56,7 @@ public abstract class AppBaseFragment<V extends ViewDataBinding, VM extends Base
         //Activity默认背景为白色
         getContentView().setBackgroundResource(R.color._FFFFFF);
         //设置状态栏高度
-        if (!isSetCustomStatusBarHeight()) {
+        if (isSetCustomStatusBarHeight()) {
             @IdRes final int id = ResourceUtil.getResId("rl_layout_title_bar", R.id.class);
             if (id != -1) {
                 final View view = getContentView().findViewById(id);
@@ -68,36 +68,37 @@ public abstract class AppBaseFragment<V extends ViewDataBinding, VM extends Base
         }
     }
 
-    public void setStatusBar(){
-
-    }
-
     /**
      * 初始化状态栏
      */
     private void initStatusBar() {
         //设置默认状态栏背景颜色 为透明色
-        StatusBarUtil.setStatusBarColor(getActivity(), R.color._00000000);
-        //设置默认状态栏字体颜色 为浅色
-        StatusBarUtil.setStatusBarContentColor(getActivity(), isSetStatusBarContentDark());
+        StatusBarUtil.setStatusBarColor(getActivity(), getStatusBarBackgroundStyle());
+        //设置默认状态栏字体颜色为浅色
+        StatusBarUtil.setStatusBarContentColor(getActivity(), getStatusBarTextStyle());
     }
 
     /**
-     * 是否自定义设置状态栏高度
+     * 设置导航栏是否预留出状态栏高度
      *
-     * @return true 自定义设置  false 默认设置
+     * @return true 预留  false 不预留
      */
     protected boolean isSetCustomStatusBarHeight() {
-        return statusBarHeight;
+        return true;
     }
 
     /**
-     * 是否设置状态栏内容颜色为深色
-     *
-     * @return true 深色  false 浅色
+     * 设置状态栏内容颜色
      */
-    protected boolean isSetStatusBarContentDark() {
-        return statusBarDark;
+    protected boolean getStatusBarTextStyle() {
+        return false;
+    }
+
+    /**
+     * 设置状态栏背景颜色
+     */
+    protected int getStatusBarBackgroundStyle() {
+        return R.color._00000000;
     }
 
 }

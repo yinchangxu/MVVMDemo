@@ -35,10 +35,37 @@ public class DemoActivity extends AppBaseActivity<ActivityDemoBinding, DemoViewM
 
     @Override
     protected void initData() {
-        //状态栏颜色为深色
-        statusBarDark = true;
-        //设置是否自定义导航栏设置状态栏高度（true:不留状态栏高度 false:导航栏留出状态栏高度）
-        statusBarHeight = false;
         super.initData();
     }
+
+    /**
+     * 设置是否自定义导航栏设置状态栏高度(默认true)
+     *
+     * @return true:导航栏留出状态栏高度 false: 不留状态栏高度
+     */
+    @Override
+    protected boolean isSetCustomStatusBarHeight() {
+        return true;
+    }
+
+    /**
+     * 设置状态栏内容颜色(默认false)
+     *
+     * @return true:深色 false:浅色
+     */
+    @Override
+    protected boolean getStatusBarTextStyle() {
+        return true;
+    }
+
+    /**
+     * 设置状态栏背景色(默认透明）
+     *
+     * @return 颜色id
+     */
+    @Override
+    protected int getStatusBarBackgroundStyle() {
+        return R.color._00000000;
+    }
+
 }
