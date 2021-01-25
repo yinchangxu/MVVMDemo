@@ -60,15 +60,6 @@ public interface IDemoNetworkSource {
 ```
 public class DemoNetworkSource extends BaseNetworkSource implements IDemoNetworkSource {
 
-    private ServerApi mServerApi;
-
-    private DemoNetworkSource() {
-        this.mServerApi = RetrofitUtil.getInstance().create(ServerApi.class);
-    }
-
-    public static DemoNetworkSource create() {
-        return new DemoNetworkSource();
-    }
 }
 ```
 ### 3.新建网络数据仓库
@@ -112,7 +103,7 @@ public class DemoModelFactory extends ViewModelProvider.NewInstanceFactory {
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         DemoRepository demoRepository = DemoRepository.create()
-                .setNetworkSource(DemoNetworkSource.create());
+                        .setNetworkSource(new DemoNetworkSource());
 
         return CastUtil.cast(new DemoViewModel(demoRepository));
     }
