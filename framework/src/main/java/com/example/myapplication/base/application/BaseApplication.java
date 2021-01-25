@@ -6,7 +6,6 @@ import android.content.Context;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
-import com.example.myapplication.R;
 import com.example.myapplication.constant.NetworkURL;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -23,10 +22,6 @@ import java.util.List;
  */
 public abstract class BaseApplication extends Application {
 
-
-    /**
-     * MainApp Context
-     */
     protected static Application sInstance;
 
     //static 代码段可以防止内存泄露
@@ -34,7 +29,7 @@ public abstract class BaseApplication extends Application {
         //设置全局的Header构建器
         SmartRefreshLayout.setDefaultRefreshHeaderCreator((Context context, RefreshLayout layout) -> {
             //全局设置主题颜色
-            layout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white);
+            layout.setPrimaryColorsId(android.R.color.white, android.R.color.black);
             //.setTimeFormat(new DynamicTimeFormat("更新于 %s"));//指定为经典Header，默认是 贝塞尔雷达Header
             return new ClassicsHeader(context);
         });
@@ -66,30 +61,9 @@ public abstract class BaseApplication extends Application {
      * 初始化
      */
     private void init() {
-        initLoadSir();
         initUtils();
     }
 
-    /**
-     * 初始化LoadSir
-     */
-    private void initLoadSir() {
-//        ProgressCallback loadingCallback = new ProgressCallback.Builder()
-//                .setTitle("数据加载中...")
-//                .build();
-//
-//        LoadSir.beginBuilder()
-//                .addCallback(loadingCallback)
-//                //加载中 Callback
-//                .addCallback(new LoadingCallback())
-//                //网络连接错误 Callback
-//                .addCallback(new NetworkUnavailableCallback())
-//                //暂无内容 Callback
-//                .addCallback(new EmptyCallback())
-//                //成功 Callback (默认)
-//                .setDefaultCallback(SuccessCallback.class)
-//                .commit();
-    }
 
     /**
      * 初始化万能工具类

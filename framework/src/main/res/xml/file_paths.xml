@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!--  files-path代表目录context.getFilesDir()  -->
+    <files-path
+        name="files-path"
+        path="." />
+    <!--  代表目录context.getCacheDir()  -->
+    <cache-path
+        name="cache-path"
+        path="." />
+    <!--  代表目录Environment.getExternalStorageDirectory()  -->
+    <external-path
+        name="external_storage_root"
+        path="." />
+    <!--  代表目录context.getExternalFilesDirs()  -->
+    <external-files-path
+        name="external_file_path"
+        path="." />
+    <!--  代表目录  -->
+    <external-cache-path
+        name="external_cache_path"
+        path="." />
+    <!--代表设备的根目录new File("/");。这样子可以读取到sd卡和一些应用分身的目录，否则微信分身保存的图片，就会导致 java.lang.IllegalArgumentException: Failed to find configured root that contains /storage/emulated/999/tencent/MicroMsg/WeiXin/export1544062754693.jpg-->
+    <root-path
+        name="root-path"
+        path="" />
+</paths>

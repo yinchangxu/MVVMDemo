@@ -33,10 +33,6 @@ import com.example.myapplication.util.StatusBarUtil;
 @NeedPermissions
 public abstract class AppBaseActivity<V extends ViewDataBinding, VM extends BaseViewModel> extends MvvmBaseActivity<V, VM> {
 
-    protected boolean statusBarHeight = true;
-
-    protected boolean statusBarDark = false;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,16 +45,16 @@ public abstract class AppBaseActivity<V extends ViewDataBinding, VM extends Base
         initStatusBar();
     }
 
+
     /**
      * 初始化数据
      */
-    @Override
     protected void initData() {
         super.initData();
         //Activity默认背景为白色
         getContentView().setBackgroundResource(R.color._FFFFFF);
         //设置状态栏高度
-        if (!isSetCustomStatusBarHeight()) {
+        if (isSetCustomStatusBarHeight()) {
             @IdRes final int id = ResourceUtil.getResId("rl_layout_title_bar", R.id.class);
             if (id != -1) {
                 final View view = findViewById(id);
@@ -75,27 +71,32 @@ public abstract class AppBaseActivity<V extends ViewDataBinding, VM extends Base
      */
     private void initStatusBar() {
         //设置默认状态栏背景颜色 为透明色
-        StatusBarUtil.setStatusBarColor(this, R.color._00000000);
-        //设置默认状态栏字体颜色 为浅色
-        StatusBarUtil.setStatusBarContentColor(this, isSetStatusBarContentDark());
+        StatusBarUtil.setStatusBarColor(this, getStatusBarBackgroundStyle());
+        //设置默认状态栏字体颜色为浅色
+        StatusBarUtil.setStatusBarContentColor(this, getStatusBarTextStyle());
     }
 
     /**
-     * 是否自定义设置状态栏高度
+     * 设置导航栏是否预留出状态栏高度
      *
-     * @return true 自定义设置  false 默认设置
+     * @return true 预留  false 不预留
      */
     protected boolean isSetCustomStatusBarHeight() {
-        return statusBarHeight;
+        return true;
     }
 
     /**
-     * 是否设置状态栏内容颜色为深色
-     *
-     * @return true 深色  false 浅色
+     * 设置状态栏内容颜色
      */
-    protected boolean isSetStatusBarContentDark() {
-        return statusBarDark;
+    protected boolean getStatusBarTextStyle() {
+        return false;
+    }
+
+    /**
+     * 设置状态栏背景颜色
+     */
+    protected int getStatusBarBackgroundStyle() {
+        return R.color._00000000;
     }
 
 
@@ -107,7 +108,7 @@ public abstract class AppBaseActivity<V extends ViewDataBinding, VM extends Base
     /**
      * 指定间隔时间内 按下两次返回键退出App
      */
-    public void doubleDownExitApp() {
+    protected void doubleDownExitApp() {
         if (mExitApp) {
             //关闭所有的Activity
             ActivityUtils.finishAllActivities();

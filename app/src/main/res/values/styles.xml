@@ -1,3 +1,12 @@
 <resources>
 
+    <!-- 解决启动页白屏或黑屏问题，
+    出现白屏黑屏的原因大概就是创建新进程时还没创建完Activity，
+     所以根据设置的主题不同显示了白屏或者黑屏，
+     这里windowBackground可以换成自己的启动页背景启动后就显示这个图了-->
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/shape_splash_style</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>

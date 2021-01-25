@@ -28,3 +28,7 @@
     @org.greenrobot.eventbus.Subscribe <methods>;
 }
 -keep enum org.greenrobot.eventbus.ThreadMode { *; }
+
+#网络加载、超时处理
+-dontwarn com.kingja.loadsir.**
+-keep class com.kingja.loadsir.** {*;}

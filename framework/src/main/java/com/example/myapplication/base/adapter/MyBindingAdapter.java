@@ -15,6 +15,9 @@ import androidx.databinding.BindingAdapter;
 
 import com.example.myapplication.base.util.PhotoFromPhotoAlbum;
 import com.example.myapplication.util.ImageLoaderUtil;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 
 public class MyBindingAdapter {
@@ -75,6 +78,20 @@ public class MyBindingAdapter {
     @BindingAdapter(value = "android:textSize", requireAll = false)
     public static void setTextSize(TextView textView, int size) {
         textView.setTextSize(size);
+    }
+
+    @BindingAdapter(value = "android:setOnLoadMoreListener", requireAll = false)
+    public static void setOnLoadMoreListener(SmartRefreshLayout smartRefreshLayout, OnLoadMoreListener onLoadMoreListener) {
+        if (smartRefreshLayout != null) {
+            smartRefreshLayout.setOnLoadMoreListener(onLoadMoreListener);
+        }
+    }
+
+    @BindingAdapter(value = "android:setOnRefreshListener", requireAll = false)
+    public static void setOnRefreshListener(SmartRefreshLayout smartRefreshLayout, OnRefreshListener onRefreshListener) {
+        if (smartRefreshLayout != null) {
+            smartRefreshLayout.setOnRefreshListener(onRefreshListener);
+        }
     }
 
 }

@@ -3,6 +3,7 @@ package com.example.myapplication.widget.dialog;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -129,6 +130,16 @@ public class LoadingDialog {
         if (mDialog != null) {
             mDialog.hide();
             mDialog = null;
+        }else {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (mDialog != null) {
+                        mDialog.hide();
+                        mDialog = null;
+                    }
+                }
+            },1000);
         }
         destroyAnimator();
     }

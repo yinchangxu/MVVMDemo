@@ -1,8 +1,10 @@
 package com.demo.mvvm.viewmodel;
 
+import android.os.Handler;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
@@ -18,6 +20,10 @@ import com.demo.mvvm.repository.DemoRepository;
 import com.example.myapplication.base.entity.TitleBarBean;
 import com.example.myapplication.base.viewmodel.BaseViewModel;
 import com.example.myapplication.listener.OnResultListener;
+import com.example.myapplication.widget.dialog.LoadingDialog;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.HashMap;
 import java.util.List;
@@ -75,6 +81,50 @@ public class DemoViewModel extends BaseViewModel<DemoRepository> {
     public final ObservableList<DemoEntity> items = new ObservableArrayList<>();
     public final ItemBinding<DemoEntity> itemBinding = ItemBinding.of(BR.demoEntity, R.layout.item);
 
+    public OnLoadMoreListener loadMoreListener = new OnLoadMoreListener() {
+        @Override
+        public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+            showLoadingDialog("加载中...");
+            //假数据
+            for (int i = 0; i < 5; i++) {
+                DemoEntity demoEntity = new DemoEntity();
+                demoEntity.username = String.valueOf(i);
+                demoEntity.id = String.valueOf(i);
+                demoEntity.nickname = String.valueOf(i);
+                demoEntity.password = String.valueOf(i);
+                items.add(demoEntity);
+            }
+            hideLoadingDialog();
+            refreshLayout.finishLoadMore();
+
+        }
+    };
+
+    public OnRefreshListener onRefreshListener = new OnRefreshListener() {
+        @Override
+        public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+            items.clear();
+            showLoadingDialog("加载中...");
+            //假数据
+            for (int i = 0; i < 5; i++) {
+                DemoEntity demoEntity = new DemoEntity();
+                demoEntity.username = String.valueOf(i);
+                demoEntity.id = String.valueOf(i);
+                demoEntity.nickname = String.valueOf(i);
+                demoEntity.password = String.valueOf(i);
+                items.add(demoEntity);
+            }
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    hideLoadingDialog();
+                }
+            }, 1000);
+            refreshLayout.finishRefresh();
+
+        }
+    };
+
     public DemoViewModel(DemoRepository repository) {
         super(repository);
         //导航栏中心文字
@@ -91,7 +141,7 @@ public class DemoViewModel extends BaseViewModel<DemoRepository> {
     @Override
     protected void onCreate() {
         super.onCreate();
-
+        showLoadingDialog("123");
         //假数据
         for (int i = 0; i < 5; i++) {
             DemoEntity demoEntity = new DemoEntity();
@@ -101,7 +151,7 @@ public class DemoViewModel extends BaseViewModel<DemoRepository> {
             demoEntity.password = String.valueOf(i);
             items.add(demoEntity);
         }
-
+        hideLoadingDialog();
         //返回json中data数据为{}
         Map<String, Object> postMap1 = new HashMap<>();
         postMap1.put("username", "123");

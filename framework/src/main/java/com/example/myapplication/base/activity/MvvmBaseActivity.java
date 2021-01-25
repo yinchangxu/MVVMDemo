@@ -226,38 +226,6 @@ public abstract class MvvmBaseActivity<V extends ViewDataBinding, VM extends Bas
         startActivityForResult(intent, RESULT_CAMERA);
     }
 
-//    /**
-//     * 先检查权限然后打开相机
-//     */
-//    public void openCameraWithCheckPermission(String path) {
-//        addDisposable(
-//                mRxPermissions
-//                        .requestEachCombined(CAMERA)
-//                        .subscribe(permission -> {
-//                            if (permission.granted) {
-//                                openCamera(path);
-//                            } else if (permission.shouldShowRequestPermissionRationale) {
-//                                Toast.makeText(this,"相机权限授予失败",Toast.LENGTH_SHORT).show();
-//                            } else {
-//                                new AlertDialog.Builder(this)
-//                                        .setMessage("需要您去设置页面，「权限管理」，开启「相机」权限")
-//                                        .setPositiveButton("去设置", (DialogInterface dialog, int which) -> {
-//                                            Intent settingIntent = new Intent();
-//
-//                                            settingIntent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-//                                            settingIntent.setData(Uri.fromParts("package", getPackageName(), null));
-//                                            settingIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//
-//                                            startActivity(settingIntent);
-//                                        })
-//                                        .setOnDismissListener(null)
-//                                        .setCancelable(false)
-//                                        .show();
-//                            }
-//                        })
-//        );
-//    }
-
     /**
      * 打开相册
      */
@@ -269,38 +237,6 @@ public abstract class MvvmBaseActivity<V extends ViewDataBinding, VM extends Bas
 
         startActivityForResult(Intent.createChooser(intent, "选择图片"), RESULT_PHOTO);
     }
-
-//    /**
-//     * 先检查权限然后打开相册
-//     */
-//    public void openPhotoWithCheckPermission() {
-//        addDisposable(
-//                mRxPermissions
-//                        .requestEachCombined(READ_EXTERNAL_STORAGE)
-//                        .subscribe(permission -> {
-//                            if (permission.granted) {
-//                                openPhoto();
-//                            } else if (permission.shouldShowRequestPermissionRationale) {
-//                                Toast.makeText(this,"外部存储权限授予失败",Toast.LENGTH_SHORT).show();
-//                            } else {
-//                                new AlertDialog.Builder(this)
-//                                        .setMessage("需要您去设置页面，「权限管理」，开启「外部存储」权限")
-//                                        .setPositiveButton("去设置", (DialogInterface dialog, int which) -> {
-//                                            Intent settingIntent = new Intent();
-//
-//                                            settingIntent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-//                                            settingIntent.setData(Uri.fromParts("package", getPackageName(), null));
-//                                            settingIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//
-//                                            startActivity(settingIntent);
-//                                        })
-//                                        .setOnDismissListener(null)
-//                                        .setCancelable(false)
-//                                        .show();
-//                            }
-//                        })
-//        );
-//    }
 
     /**
      * 对图片进行裁剪
@@ -371,7 +307,7 @@ public abstract class MvvmBaseActivity<V extends ViewDataBinding, VM extends Bas
         mRxPermissions = null;
         //清空Disposable
         clearDisposable();
-//        //解注册EventBus
+        //反注册EventBus
         if (this.getClass().isAnnotationPresent(BindEventBus.class)
                 && EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
