@@ -156,7 +156,7 @@ public class DemoViewModel extends BaseViewModel<DemoRepository> {
         Map<String, Object> postMap1 = new HashMap<>();
         postMap1.put("username", "123");
         postMap1.put("password", "123");
-        mRepository.demo1(4, postMap1, new OnResultListener<ResultEntity<DemoEntity>, String>() {
+        mRepository.demo1(1, postMap1, new OnResultListener<ResultEntity<DemoEntity>, String>() {
             @Override
             public void onSuccess(ResultEntity<DemoEntity> data) {
                 super.onSuccess(data);

@@ -53,7 +53,7 @@ public class ImageLoaderUtil {
      * @param imageView ImageView控件
      * @param path      路径
      */
-    public void display(Context context, ImageView imageView, String path, int type) {
+    public void display(Context context, ImageView imageView, String path) {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");
         }
@@ -72,7 +72,7 @@ public class ImageLoaderUtil {
      * @param placeholder 加载占位符
      * @param error       错误占位符
      */
-    public void display(Context context, ImageView imageView, String path, int placeholder, int error, int type) {
+    public void display(Context context, ImageView imageView, String path, int placeholder, int error) {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");
         }
@@ -94,7 +94,7 @@ public class ImageLoaderUtil {
      * @param placeholder      加载占位符
      * @param error            错误占位符
      */
-    public void display(Context context, ImageView imageView, @DrawableRes int drawableResource, int placeholder, int error, int type) {
+    public void display(Context context, ImageView imageView, @DrawableRes int drawableResource, int placeholder, int error) {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");
         }
@@ -113,8 +113,8 @@ public class ImageLoaderUtil {
      * @param imageView     ImageView控件
      * @param videoFilePath 视频本地路径
      */
-    public void displayVideoThumb(Context context, ImageView imageView, String videoFilePath, int type) {
-        displayVideoThumb(context, imageView, videoFilePath, 0, 0, type);
+    public void displayVideoThumb(Context context, ImageView imageView, String videoFilePath) {
+        displayVideoThumb(context, imageView, videoFilePath, 0, 0);
     }
 
     /**
@@ -126,7 +126,7 @@ public class ImageLoaderUtil {
      * @param placeholder   加载中占位符
      * @param error         错误占位符
      */
-    public void displayVideoThumb(Context context, ImageView imageView, String videoFilePath, int placeholder, int error, int type) {
+    public void displayVideoThumb(Context context, ImageView imageView, String videoFilePath, int placeholder, int error) {
         Glide.with(context)
                 .load(videoFilePath)
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
@@ -146,7 +146,7 @@ public class ImageLoaderUtil {
      * @param error         错误占位符
      * @param target        目标回调接口
      */
-    public void displayVideoThumb(Context context, ImageView imageView, String videoFilePath, int placeholder, int error, SimpleTarget<Bitmap> target, int type) {
+    public void displayVideoThumb(Context context, ImageView imageView, String videoFilePath, int placeholder, int error, SimpleTarget<Bitmap> target) {
         Glide.with(context)
                 .asBitmap()
                 .load(videoFilePath)

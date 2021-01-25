@@ -29,7 +29,7 @@ public class MyBindingAdapter {
         } else if (object instanceof Uri) {
             view.setImageURI((Uri) object);
         } else if (object instanceof String) {
-            ImageLoaderUtil.getInstance().display(view.getContext(), view, (String) object, ImageLoaderUtil.ImageType.DEFAULT);
+            ImageLoaderUtil.getInstance().display(view.getContext(), view, (String) object);
         } else if (object instanceof Bitmap) {
             view.setImageBitmap((Bitmap) object);
         }
