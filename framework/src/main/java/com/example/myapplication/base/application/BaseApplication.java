@@ -13,6 +13,8 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
+import java.util.List;
+
 /**
  * 文件名: AppBaseActivity
  * 作者: yin
@@ -47,11 +49,11 @@ public abstract class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
-        NetworkURL.SERVER_URL = initBaseUrl();
+        NetworkURL.mUrlList = initBaseUrl();
         init();
     }
 
-    protected abstract String initBaseUrl();
+    protected abstract List<String> initBaseUrl();
 
     @Override
     protected void attachBaseContext(Context base) {

@@ -29,20 +29,20 @@ public class DemoRepository extends BaseRepository implements IDemoNetworkSource
     }
 
     @Override
-    public void demo1(@NonNull Map<String, Object> postMap, @NonNull OnResultListener<ResultEntity<DemoEntity>, String> listener) {
+    public void demo1(int position, @NonNull Map<String, Object> postMap, @NonNull OnResultListener<ResultEntity<DemoEntity>, String> listener) {
         if (mNetworkSource != null) {
             IDemoNetworkSource demoNetworkSource = mNetworkSource.get();
-            demoNetworkSource.demo1(postMap, listener);
+            demoNetworkSource.demo1(position, postMap, listener);
         } else {
             throw new IllegalArgumentException("网络源不能为空");
         }
     }
 
     @Override
-    public void demo2(@NonNull Map<String, Object> postMap, @NonNull OnResultListener<ResultEntity<List<DemoEntity>>, String> listener) {
+    public void demo2(int position, @NonNull Map<String, Object> postMap, @NonNull OnResultListener<ResultEntity<List<DemoEntity>>, String> listener) {
         if (mNetworkSource != null) {
             IDemoNetworkSource demoNetworkSource = mNetworkSource.get();
-            demoNetworkSource.demo2(postMap, listener);
+            demoNetworkSource.demo2(position, postMap, listener);
         } else {
             throw new IllegalArgumentException("网络源不能为空");
         }

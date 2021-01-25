@@ -1,27 +1,28 @@
 package com.demo.mvvm;
 
-import android.content.Context;
-
 import com.example.myapplication.base.application.BaseApplication;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MyApplication extends BaseApplication {
-
-    private static MyApplication context;
-
-    public static Context getContext() {
-        return context;
-    }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        context = this;
     }
 
-    //服务器地址
+    /**
+     * 设置服务器地址集合
+     *
+     * @return 服务器地址集
+     */
     @Override
-    protected String initBaseUrl() {
-        return "http://www.xxx.com";
+    protected List<String> initBaseUrl() {
+        List<String> urlList = new ArrayList<>();
+        urlList.add("http://www.xxx.com");
+        urlList.add("http://www.yyy.com");
+        return urlList;
     }
 
 }

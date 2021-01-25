@@ -29,7 +29,7 @@ public class DemoModelFactory extends ViewModelProvider.NewInstanceFactory {
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         DemoRepository demoRepository = DemoRepository.create()
-                .setNetworkSource(DemoNetworkSource.create());
+                .setNetworkSource(new DemoNetworkSource());
 
         return CastUtil.cast(new DemoViewModel(demoRepository));
     }

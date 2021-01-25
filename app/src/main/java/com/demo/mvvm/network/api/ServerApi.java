@@ -22,17 +22,13 @@ public interface ServerApi {
 
     /**
      * data为对象的写法
-     *
-     *
-     *
-     *           "success":true,
-     *           "data":{
-     *               "username":"123",
-     *               "password":"123"
-     *           },
-     *           "code":200
-     *      }
-     *
+     * "success":true,
+     * "data":{
+     * "username":"123",
+     * "password":"123"
+     * },
+     * "code":200
+     * }
      *
      * @param postMap 数据
      * @return Single

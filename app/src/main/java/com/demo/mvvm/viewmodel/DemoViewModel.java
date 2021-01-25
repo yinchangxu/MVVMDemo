@@ -106,7 +106,7 @@ public class DemoViewModel extends BaseViewModel<DemoRepository> {
         Map<String, Object> postMap1 = new HashMap<>();
         postMap1.put("username", "123");
         postMap1.put("password", "123");
-        mRepository.demo1(postMap1, new OnResultListener<ResultEntity<DemoEntity>, String>() {
+        mRepository.demo1(4, postMap1, new OnResultListener<ResultEntity<DemoEntity>, String>() {
             @Override
             public void onSuccess(ResultEntity<DemoEntity> data) {
                 super.onSuccess(data);
@@ -122,7 +122,7 @@ public class DemoViewModel extends BaseViewModel<DemoRepository> {
         Map<String, Object> postMap2 = new HashMap<>();
         postMap2.put("username", "123");
         postMap2.put("password", "123");
-        mRepository.demo2(postMap2, new OnResultListener<ResultEntity<List<DemoEntity>>, String>() {
+        mRepository.demo2(1, postMap2, new OnResultListener<ResultEntity<List<DemoEntity>>, String>() {
             @Override
             public void onSuccess(ResultEntity<List<DemoEntity>> data) {
                 super.onSuccess(data);

@@ -1,6 +1,8 @@
 package com.example.myapplication.constant;
 
 
+import java.util.List;
+
 /**
  * 文件名: NetworkConstant
  * 作者: yin
@@ -14,11 +16,12 @@ public class NetworkURL {
 //     */
 //    public static final int SUCCESS = 1;
 
-    /**
-     * 公司的服务器 BaseUrl
-     */
-//    public static final String SERVER_URL = "http://192.168.8.113:8090/";
 
-    public static String SERVER_URL = "http://www.xxx.com/";
+//    public static String SERVER_URL = "";
+
+    /**
+     * 请求地址集合
+     */
+    public static List<String> mUrlList;
 
 }

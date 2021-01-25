@@ -1,11 +1,14 @@
 package com.example.myapplication.util;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.example.myapplication.constant.NetworkURL;
 import com.example.myapplication.util.factory.CustomGsonConverterFactory;
 import com.example.myapplication.util.interceptor.CustomInterceptor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -18,10 +21,13 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
  */
 public class RetrofitUtil {
 
-    private Retrofit sRetrofit;
+//    private Retrofit sRetrofit;
+
+    public List<Retrofit> mRetrofitList;
 
     private RetrofitUtil() {
-        sRetrofit = initRetrofit();
+//        sRetrofit = initRetrofit();
+        mRetrofitList = initRetrofits();
     }
 
     private static class Inner {
@@ -30,6 +36,7 @@ public class RetrofitUtil {
 
     /**
      * 获取 静态内部类单例
+     *
      * @return 静态内部类单例
      */
     public static RetrofitUtil getInstance() {
@@ -38,9 +45,11 @@ public class RetrofitUtil {
 
     /**
      * 创建 Retrofit 实例
+     *
      * @return Retrofit实例
      */
-    private Retrofit initRetrofit() {
+    private List<Retrofit> initRetrofits() {
+
         final OkHttpClient.Builder builder = new OkHttpClient().newBuilder()
                 .readTimeout(10, TimeUnit.SECONDS)
                 .connectTimeout(10, TimeUnit.SECONDS)
@@ -52,21 +61,31 @@ public class RetrofitUtil {
                 .setLenient()  //允许超长字符串
                 .create();
 
-        return new Retrofit.Builder()
-                .baseUrl(NetworkURL.SERVER_URL)
-                .client(builder.build())
-                .addConverterFactory(CustomGsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
+        List<Retrofit> retrofits = new ArrayList<>();
+        for (int i = 0; i < NetworkURL.mUrlList.size(); i++) {
+            retrofits.add(new Retrofit.Builder()
+                    .baseUrl(NetworkURL.mUrlList.get(i))
+                    .client(builder.build())
+                    .addConverterFactory(CustomGsonConverterFactory.create(gson))
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .build());
+        }
+        return retrofits;
     }
 
     /**
      * 创建 Api 请求类
+     *
      * @param api Api请求原始反射类
      * @param <T> 泛型
      * @return Api请求类
      */
-    public <T> T create(final Class<T> api) {
-        return sRetrofit.create(api);
+    public <T> T create(int position, final Class<T> api) {
+        try {
+            return mRetrofitList.get(position).create(api);
+        } catch (IndexOutOfBoundsException e) {
+            ToastUtils.showShort("url配置不正确或pos设置不正确");
+        }
+        return null;
     }
 }
