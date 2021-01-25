@@ -13,7 +13,7 @@ import java.lang.reflect.Field;
 public class ResourceUtil {
 
     /**
-     * 通过发射获取资源ID
+     * 通过反射获取资源ID
      * @param variableName 资源ID 名称
      * @param cls 资源ID 类型
      * @return 资源ID
