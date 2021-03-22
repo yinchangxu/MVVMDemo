@@ -7,9 +7,14 @@ import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Single;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
+import retrofit2.http.PartMap;
 
 /**
  * 文件名: ServerApi
@@ -46,5 +51,15 @@ public interface ServerApi {
     @FormUrlEncoded
     @POST("api/demo/demo")
     Single<ResultEntity<List<DemoEntity>>> demo2(@FieldMap Map<String, Object> postMap);
+
+    /**
+     * 文件上传
+     *
+     * @param postMap 数据
+     * @return Single
+     */
+    @Multipart
+    @POST("api/demo/demo")
+    Single<ResultEntity<List<DemoEntity>>> demo3(@PartMap Map<String, RequestBody> postMap, @Part List<MultipartBody.Part> files);
 
 }
