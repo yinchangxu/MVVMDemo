@@ -1,5 +1,6 @@
 package com.example.myapplication.base.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blankj.utilcode.util.ConvertUtils;
 import com.example.myapplication.R;
 
 /**
@@ -24,22 +26,31 @@ public class EmptyRecyclerView extends RecyclerView {
 
     private ViewGroup parentView;
 
+    @SuppressLint("InflateParams")
     public EmptyRecyclerView(@NonNull Context context) {
         super(context);
         mContext = context;
         emptyView = LayoutInflater.from(mContext).inflate(R.layout.layout_recycleview_empty, null, false);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        emptyView.setLayoutParams(layoutParams);
     }
 
+    @SuppressLint("InflateParams")
     public EmptyRecyclerView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
         emptyView = LayoutInflater.from(mContext).inflate(R.layout.layout_recycleview_empty, null, false);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        emptyView.setLayoutParams(layoutParams);
     }
 
+    @SuppressLint("InflateParams")
     public EmptyRecyclerView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
         emptyView = LayoutInflater.from(mContext).inflate(R.layout.layout_recycleview_empty, null, false);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        emptyView.setLayoutParams(layoutParams);
     }
 
     final private AdapterDataObserver observer = new AdapterDataObserver() {
@@ -77,7 +88,7 @@ public class EmptyRecyclerView extends RecyclerView {
 
     @Override
     public void setAdapter(Adapter adapter) {
-        final Adapter oldAdapter = getAdapter();
+        Adapter oldAdapter = getAdapter();
         if (oldAdapter != null) {
             oldAdapter.unregisterAdapterDataObserver(observer);
         }
@@ -88,10 +99,5 @@ public class EmptyRecyclerView extends RecyclerView {
 
         checkIfEmpty();
     }
-
-//    public void setEmptyView(View emptyView) {
-//        this.emptyView = emptyView;
-//        checkIfEmpty();
-//    }
 
 }
