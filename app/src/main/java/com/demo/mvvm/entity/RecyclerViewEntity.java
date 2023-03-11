@@ -3,7 +3,7 @@ package com.demo.mvvm.entity;
 import com.example.myapplication.base.entity.BaseEntity;
 import com.google.gson.annotations.SerializedName;
 
-public class DemoEntity extends BaseEntity {
+public class RecyclerViewEntity extends BaseEntity {
 
     @SerializedName("id")
     public String id;

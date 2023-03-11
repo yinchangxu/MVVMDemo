@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
-        <import type="com.demo.mvvm.entity.DemoEntity" />
+        <import type="com.demo.mvvm.entity.RecyclerViewEntity" />
 
         <variable
-            name="demoEntity"
-            type="DemoEntity" />
+            name="recyclerViewEntity"
+            type="RecyclerViewEntity" />
 
     </data>
 
@@ -17,5 +16,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="5dp"
-        android:text="@={demoEntity.username}" />
+        android:text="@={recyclerViewEntity.username}" />
+
 </layout>

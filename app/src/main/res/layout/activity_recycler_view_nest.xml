@@ -1,0 +1,43 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.demo.mvvm.viewmodel.RecyclerViewNestViewModel" />
+
+        <variable
+            name="recyclerViewNestViewModel"
+            type="RecyclerViewNestViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_title_bar"
+            app:titleBar="@{recyclerViewNestViewModel.titleBar}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.example.myapplication.base.view.EmptyRecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false"
+                android:orientation="vertical"
+                app:itemBinding="@{recyclerViewNestViewModel.itemBinding}"
+                app:items="@{recyclerViewNestViewModel.items}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</layout>

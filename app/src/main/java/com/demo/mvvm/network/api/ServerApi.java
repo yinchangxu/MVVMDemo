@@ -1,6 +1,6 @@
 package com.demo.mvvm.network.api;
 
-import com.demo.mvvm.entity.DemoEntity;
+import com.demo.mvvm.entity.RecyclerViewEntity;
 import com.demo.mvvm.entity.ResultEntity;
 
 import java.util.List;
@@ -40,7 +40,7 @@ public interface ServerApi {
      */
     @FormUrlEncoded
     @POST("api/demo/demo")
-    Single<ResultEntity<DemoEntity>> demo1(@FieldMap Map<String, Object> postMap);
+    Single<ResultEntity<RecyclerViewEntity>> demo1(@FieldMap Map<String, Object> postMap);
 
     /**
      * data为数组的写法
@@ -50,7 +50,7 @@ public interface ServerApi {
      */
     @FormUrlEncoded
     @POST("api/demo/demo")
-    Single<ResultEntity<List<DemoEntity>>> demo2(@FieldMap Map<String, Object> postMap);
+    Single<ResultEntity<List<RecyclerViewEntity>>> demo2(@FieldMap Map<String, Object> postMap);
 
     /**
      * 文件上传
@@ -60,6 +60,6 @@ public interface ServerApi {
      */
     @Multipart
     @POST("api/demo/demo")
-    Single<ResultEntity<List<DemoEntity>>> demo3(@PartMap Map<String, RequestBody> postMap, @Part List<MultipartBody.Part> files);
+    Single<ResultEntity<List<RecyclerViewEntity>>> demo3(@PartMap Map<String, RequestBody> postMap, @Part List<MultipartBody.Part> files);
 
 }
