@@ -44,6 +44,8 @@ public class TitleBarBean {
 
     public ObservableInt ivLeft = new ObservableInt(R.mipmap.back);
 
+    public ObservableInt ivLeftVisibility = new ObservableInt(View.VISIBLE);
+
     public ObservableInt ivLeftColor = new ObservableInt(R.color._000000);
 
     public ObservableInt tvCenterColor = new ObservableInt(R.color._000000);
